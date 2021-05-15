@@ -1,0 +1,10 @@
+1- Criar uma Pasta com nome do Projeto ex:   DevFreela
+2- Entrar dentro da pasta e criar uma solution ex: dotnet new sln --name DevFreela
+3- Criar um projeto dentro da pasta DevFreela com o seguinte comando: ex: dotnet new webapi --name DevFreela.API --output DevFreela.API
+4- Fazer o bind da solution com o projeto DevFreela.API ex : dotnet sln add ./DevFreela.API/DevFreela.API.csproj
+5- Criando as outras camadas que sao do tipo class library ex: dotnet new classlib -o DevFreela.Core -n DevFreela.Core
+6 - Adicionando referencia de uma camada na outra dentro de DevFreela.API executar o seguinte comando ex: dotnet add reference ../DevFreela.Core/DevFreela.Core.csproj
+6 - Dentro da pasta Infrastructure executar o seguinte comando para gerar as migrations dotnet ef migrations add 
+InitialMigration -s ../DevFreela.API/DevFreela.API.csproj -o ./Persistence/Migrations
+7 - Dentro da pasta Infrastructure executar os seguintes comandos para apply as migrations
+dotnet ef database update -s ../DevFreela.API/DevFreela.API.csproj
